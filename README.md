@@ -10,6 +10,7 @@
  
 ## Imposé
 Dans cet exercice vous devrez utiliser:
+- [React Native](https://reactnative.dev)
 - [Typescript](https://www.typescriptlang.org)
 - [React hooks](https://fr.reactjs.org/docs/hooks-intro.html)
 - [Redux](https://redux.js.org)
