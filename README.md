@@ -20,7 +20,7 @@ Dans cet exercice vous devrez utiliser:
  
 ## Exercices à réaliser
  
-*R1 :* Créer un site factice de type webapp comportant les pages suivantes : Accueil, Informations.
+*R1 :* Créer une app factice comportant les pages suivantes : Accueil, Informations.
 - Sur la page d'accueil le contenu défini en R4
 - Sur la page informations le contenu défini en R2
 - L'app comportera une navigation (pour aller d'une page à l'autre) et pourra être facilement compilée pour le développement (avec Hot Reloading) et pour une mise en production simple.
