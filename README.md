@@ -86,7 +86,6 @@ To learn more about React Native, take a look at the following resources:
 - Les travaux devront pouvoir être testable sans aucune modification à apporter au code, ni paramétrage et si besoin en suivant pas à pas une documentation.
 - Utilisez tous les outils dont vous aurez besoin.
 - Veillez à soigner votre historique git, comme s'il s'agissait d'une situation projet réelle.
-  <<<<<<< HEAD
 
 ## Finaliser l'exercice
 
@@ -104,13 +103,10 @@ To learn more about React Native, take a look at the following resources:
 
 Dans cet exercice vous devrez utiliser:
 
-> > > > > > > 3e620bf (Initial commit)
-
 - [React Native](https://reactnative.dev)
 - [Typescript](https://www.typescriptlang.org)
 - [React hooks](https://fr.reactjs.org/docs/hooks-intro.html)
 - [Redux](https://redux.js.org)
-  <<<<<<< HEAD
 
 ## Bonus
 
@@ -151,5 +147,3 @@ _R2 :_ Mettre en place un formulaire sur la page Informations comportant les cha
 _R3 :_ Le formulaire défini en R2 ne comprend pas de bouton enregistrer, toutefois les modifications de données doivent être envoyées vers l'api pour être persistées côté serveur sans clic sur le bouton valider (utiliser une api factice telle que https://reqres.in)
 
 _R4 :_ Afficher sur la page d'accueil les informations issues du formulaire, sous la forme d'une phrase : "Bonjour _prenom_ votre anniversaire est dans _nbJours_ jours. Si cela est incorrect vous pouvez modifier les informations sur votre page informations". (lien vers la page informations dans cette dernière phrase)
-
-> > > > > > > 3e620bf (Initial commit)
