@@ -10,7 +10,7 @@ const initialState = {
   data: {
     first_name: 'Kossi',
     last_name: 'BAKAR',
-    birthday: '01/01/2000',
+    birthday: '2000-01-01',
   },
   isLoading: false,
   errors: '',
