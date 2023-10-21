@@ -8,6 +8,17 @@ import {
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUser} from '../services/users/userSlice';
+import {isFuture, setYear, differenceInDays, getYear} from 'date-fns';
+
+const getDaysNumber = (birthday: string) => {
+  const today = new Date();
+  const currentYear = getYear(today);
+  const birthDayParsed = new Date(birthday);
+  const thisYearBirthDay = setYear(birthDayParsed, getYear(today));
+  return isFuture(thisYearBirthDay)
+    ? differenceInDays(thisYearBirthDay, today)
+    : differenceInDays(setYear(thisYearBirthDay, currentYear + 1), today);
+};
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -28,7 +39,9 @@ const Home = () => {
       <Text style={styles.pageTitle}>R4</Text>
       <Text style={styles.text}>{`Bonjour ${
         data.first_name
-      }. Votre anniversaire est dans ${'xx'} jours`}</Text>
+      }. Votre anniversaire est dans ${getDaysNumber(
+        data.birthday,
+      )} jours`}</Text>
       <Text style={styles.text}>
         Si cela est incorrect vous pouvez modifier les informations sur votre
         page informations
