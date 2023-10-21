@@ -20,7 +20,7 @@ export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    getUser: (state, {payload: id}: PayloadAction<string>) => {
+    getUser: (state, _: PayloadAction<string>) => {
       state.isLoading = true;
       state.errors = '';
     },

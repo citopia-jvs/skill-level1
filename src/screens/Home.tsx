@@ -1,10 +1,4 @@
-import {
-  StyleSheet,
-  Text,
-  SafeAreaView,
-  TouchableOpacity,
-  Button,
-} from 'react-native';
+import {StyleSheet, Text, SafeAreaView, Button} from 'react-native';
 import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {getUser} from '../services/users/userSlice';
