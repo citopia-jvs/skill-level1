@@ -1,14 +1,14 @@
-import {Text, View} from 'react-native';
+import {View} from 'react-native';
 import React from 'react';
 import {Provider} from 'react-redux';
 import store from './store/store';
-import Home from './screens/Home';
+import Navigator from './navigators/main';
 
 const App = () => {
   return (
     <Provider store={store}>
       <View style={{flex: 1}}>
-        <Home />
+        <Navigator />
       </View>
     </Provider>
   );
