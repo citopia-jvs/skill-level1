@@ -32,8 +32,13 @@ export const userSlice = createSlice({
       state.errors = error;
       state.isLoading = false;
     },
+    updateUser: (state, _: PayloadAction<UserType>) => {
+      state.isLoading = true;
+      state.errors = '';
+    },
   },
 });
 
-export const {getUser, getUserSuccess, getUserError} = userSlice.actions;
+export const {getUser, getUserSuccess, getUserError, updateUser} =
+  userSlice.actions;
 export default userSlice.reducer;

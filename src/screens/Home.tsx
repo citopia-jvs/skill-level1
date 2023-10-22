@@ -14,14 +14,19 @@ const getDaysNumber = (birthday: string) => {
     : differenceInDays(setYear(thisYearBirthDay, currentYear + 1), today);
 };
 
-const Home = () => {
+const Home = ({navigation}) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getUser('2'));
   }, [dispatch]);
 
-  const {data, isLoading, error} = useSelector(state => state.user);
+  const {
+    data: currentUser,
+    isLoading,
+    error,
+  } = useSelector(state => state.user);
+
   if (isLoading) {
     return <Text>Chargement ...</Text>;
   }
@@ -32,16 +37,21 @@ const Home = () => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.pageTitle}>R4</Text>
       <Text style={styles.text}>{`Bonjour ${
-        data.first_name
+        currentUser.first_name
       }. Votre anniversaire est dans ${getDaysNumber(
-        data.birthday,
+        currentUser.birthday,
       )} jours`}</Text>
       <Text style={styles.text}>
         Si cela est incorrect vous pouvez modifier les informations sur votre
         page informations
       </Text>
 
-      <Button title="Modifier" onPress={() => {}} />
+      <Button
+        title="Modifier"
+        onPress={() => {
+          navigation.navigate('Infos', {user: currentUser});
+        }}
+      />
     </SafeAreaView>
   );
 };
