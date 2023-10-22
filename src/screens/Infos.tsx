@@ -6,8 +6,6 @@ import {useSelector} from 'react-redux';
 const Infos = () => {
   const {data, error} = useSelector(state => state.user);
 
-  console.log(data.first_name, 33333366565);
-
   if (error) {
     return <Text>{error}</Text>;
   }
