@@ -1,8 +1,16 @@
-import {StyleSheet, View, TextInput} from 'react-native';
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+  TouchableOpacity,
+} from 'react-native';
 import React, {useState, useEffect} from 'react';
 import {UserType, updateUser} from '../services/users/userSlice';
 import {useDispatch} from 'react-redux';
+import DatePicker from 'react-native-date-picker';
 import useDebounce from '../hooks/useDebounce';
+import {format} from 'date-fns';
 interface Props {
   user: UserType;
 }
@@ -11,10 +19,11 @@ const UserForm: React.FC<Props> = ({user}) => {
   const dispatch = useDispatch();
   const [lastName, setLastName] = useState(user.last_name);
   const [firstName, setFirstName] = useState(user.first_name);
-  const [birthday, setBirthday] = useState(user.birthday);
+  const [birthday, setBirthday] = useState(new Date(user.birthday));
+  const [openDatePicker, setOpenDatePicker] = useState(false);
   const debouncedLastName = useDebounce(lastName, 300);
   const debouncedFirstName = useDebounce(firstName, 300);
-  const debouncedbirthday = useDebounce(birthday || '', 300);
+  const debouncedbirthday = useDebounce(format(birthday, 'yyyy-MM-dd'), 300);
 
   useEffect(() => {
     if (
@@ -54,11 +63,25 @@ const UserForm: React.FC<Props> = ({user}) => {
         onChangeText={setLastName}
         placeholder="Last Name"
       />
-      <TextInput
-        style={styles.textInput}
-        value={birthday}
-        onChangeText={setBirthday}
-        placeholder="Birthday"
+      <TouchableOpacity
+        style={[styles.textInput, styles.datepickerBtn]}
+        onPress={() => setOpenDatePicker(true)}>
+        <Text>{format(birthday, 'yyyy-MM-dd')}</Text>
+      </TouchableOpacity>
+      <DatePicker
+        maximumDate={new Date()}
+        modal
+        mode="date"
+        locale="fr"
+        open={openDatePicker}
+        date={birthday}
+        onConfirm={date => {
+          setOpenDatePicker(false);
+          setBirthday(date);
+        }}
+        onCancel={() => {
+          setOpenDatePicker(false);
+        }}
       />
     </View>
   );
@@ -80,4 +103,5 @@ const styles = StyleSheet.create({
     width: '90%',
     paddingLeft: 10,
   },
+  datepickerBtn: {justifyContent: 'center'},
 });
