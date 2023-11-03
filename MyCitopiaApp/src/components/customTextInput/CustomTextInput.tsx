@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './customTextInput.styles';
 import {Text, TextInput, TextInputProps, View} from 'react-native';
+import {type} from '../../../node_modules/axios/index.d';
 
 type CustomTextInputProps = {
   label?: string;

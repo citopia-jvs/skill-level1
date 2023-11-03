@@ -68,6 +68,8 @@ const DetailsForm = () => {
             placeholder="Dupont"
             errorMessage={errors?.lastName?.message}
             label="Nom"
+            autoComplete="family-name"
+            inputMode="text"
           />
         )}
       />
@@ -88,11 +90,16 @@ const DetailsForm = () => {
             placeholder="Daniel"
             errorMessage={errors?.firstName?.message}
             label="Prénom"
+            autoComplete="given-name"
+            inputMode="text"
           />
         )}
       />
       {errors.firstName && <Text>{errors.firstName.message}</Text>}
 
+      <Text style={{fontWeight: 'bold', marginVertical: 10}}>
+        Date de naissance
+      </Text>
       <Controller
         name="birthday"
         rules={{required: 'Date de naissance is required'}}

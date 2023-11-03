@@ -8,7 +8,6 @@ import {getUser} from '../../api/user';
 import {updateUser} from '../../context/actions/userAction';
 import {useDispatch} from 'react-redux';
 import {daysUntilNextBirthday} from '../../utils/dateCalculation';
-import {SafeAreaView} from 'react-native-safe-area-context';
 
 const Home = () => {
   const navigation = useAppTabNavigation();
@@ -48,10 +47,12 @@ const Home = () => {
   return (
     <Layout>
       <View style={styles.container}>
-        <Image style={styles.avatar} source={{uri: user.avatar}} />
+        {user.avatar && (
+          <Image style={styles.avatar} source={{uri: user.avatar}} />
+        )}
 
         <View>
-          <Text>
+          <Text style={styles.welcomeText}>
             Bonjour{' '}
             <Text style={styles.userName}>
               {user.first_name} {user.last_name}
