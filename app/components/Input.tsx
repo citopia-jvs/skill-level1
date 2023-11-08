@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { View, TextInput, StyleSheet } from "react-native";
+import { FieldError } from "react-hook-form";
 
 import { Text } from "~components/Text";
 
@@ -7,10 +8,10 @@ interface InputProps {
   value: string;
   placeholder: string;
   label: string;
-  error: boolean;
-  errorMessage: string;
+  error?: FieldError;
+  errorMessage?: string;
   onChange: () => void;
-  onBlur: () => void;
+  onBlur?: () => void;
 }
 export const Input: FC<InputProps> = ({
   value,
