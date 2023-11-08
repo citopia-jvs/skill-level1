@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeScreen } from "~screens/home-screen";
-import { UserProfileScreen } from "~screens/user-profile-screen";
+import { ProfileScreen } from "~screens/profile-screen";
 import { HomeSvg } from "~assets/icons/home";
 
 export type BottomTabParamList = {
@@ -47,7 +47,7 @@ const AppStack = ({
           headerTitle: "Profile",
           tabBarIcon: () => <Text>profile</Text>,
         }}
-        component={UserProfileScreen}
+        component={ProfileScreen}
       />
     </BottomTab.Navigator>
   );
