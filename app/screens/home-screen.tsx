@@ -1,9 +1,13 @@
 import { View, Text } from "react-native";
 
+import { useAppSelector } from "~hooks/useAppSelector";
+
 export const HomeScreen = () => {
+  const userInfo = useAppSelector((state) => state.user);
+
   return (
     <View>
-      <Text>Home Screen</Text>
+      <Text>Bonjour {userInfo.firstName}</Text>
     </View>
   );
 };
