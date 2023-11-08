@@ -1,11 +1,13 @@
-import React from "react";
-import { View, TextInput, StyleSheet, Text } from "react-native";
+import { StyleSheet, View } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 
 import { UPDATE_USER_INFO } from "~store/actions";
 import { useAppSelector } from "~/hooks/useAppSelector";
 import { useAppDispatch } from "~/hooks/useAppDispatch";
 import { UserInfo } from "~services/user/types";
+import { Layout } from "~components/Layout";
+import { Input } from "~components/Input";
+import { Text } from "~components/Text";
 
 export const ProfileScreen = () => {
   const dispatch = useAppDispatch();
@@ -39,50 +41,48 @@ export const ProfileScreen = () => {
   };
 
   return (
-    <View>
-      <Controller
-        control={control}
-        name="firstName"
-        rules={validation["firstName"]}
-        render={({ field: { onChange, value } }) => (
-          <View>
-            <Text>First Name</Text>
-
-            <TextInput
+    <Layout>
+      <View style={styles.formContainer}>
+        <Controller
+          control={control}
+          name="firstName"
+          rules={validation["firstName"]}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              label="First Name"
               placeholder="First Name"
               value={value}
-              onChangeText={onChange}
+              onChange={onChange}
               onBlur={handleSubmit(updateUser)}
-              style={styles.input}
+              error={errors.firstName}
+              errorMessage={errors.firstName?.message}
             />
-          </View>
-        )}
-      />
-      {errors.firstName && <Text>{errors.firstName.message}</Text>}
+          )}
+        />
 
-      <Controller
-        control={control}
-        name="lastName"
-        rules={validation["lastName"]}
-        render={({ field: { onChange, value } }) => (
-          <View>
-            <Text>Last Name</Text>
-
-            <TextInput
+        <Controller
+          control={control}
+          name="lastName"
+          rules={validation["lastName"]}
+          render={({ field: { onChange, value } }) => (
+            <Input
+              label="Last Name"
               placeholder="Last Name"
               value={value}
-              onChangeText={onChange}
+              onChange={onChange}
               onBlur={handleSubmit(updateUser)}
-              style={styles.input}
+              error={errors.lastName}
+              errorMessage={errors.lastName?.message}
             />
-          </View>
-        )}
-      />
-      {errors.lastName && <Text>{errors.lastName.message}</Text>}
-    </View>
+          )}
+        />
+      </View>
+    </Layout>
   );
 };
 
 const styles = StyleSheet.create({
-  input: { borderWidth: 1, paddingVertical: 10 },
+  formContainer: {
+    gap: 20,
+  },
 });

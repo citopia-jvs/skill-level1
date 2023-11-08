@@ -1,13 +1,13 @@
-import { View, Text } from "react-native";
-
 import { useAppSelector } from "~hooks/useAppSelector";
+import { Layout } from "~components/Layout";
+import { Text } from "~components/Text";
 
 export const HomeScreen = () => {
   const userInfo = useAppSelector((state) => state.user);
 
   return (
-    <View>
-      <Text>Bonjour {userInfo.firstName}</Text>
-    </View>
+    <Layout>
+      <Text fontSize={24}>Bonjour {userInfo.firstName}</Text>
+    </Layout>
   );
 };
