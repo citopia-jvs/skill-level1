@@ -1,5 +1,10 @@
 import { useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import {
+  Keyboard,
+  View,
+  TouchableWithoutFeedback,
+  StyleSheet,
+} from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import { useToast } from "react-native-toast-notifications";
 import isEqual from "lodash/isEqual";
@@ -71,39 +76,41 @@ export const ProfileScreen = () => {
 
   return (
     <Layout>
-      <View style={styles.formContainer}>
-        <Controller
-          control={control}
-          name="firstName"
-          rules={validation["firstName"]}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              label="First Name"
-              placeholder="First Name"
-              value={value}
-              onChange={onChange}
-              error={errors.firstName}
-              errorMessage={errors.firstName?.message}
-            />
-          )}
-        />
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+        <View style={styles.formContainer}>
+          <Controller
+            control={control}
+            name="firstName"
+            rules={validation["firstName"]}
+            render={({ field: { onChange, value } }) => (
+              <Input
+                label="First Name"
+                placeholder="First Name"
+                value={value}
+                onChange={onChange}
+                error={errors.firstName}
+                errorMessage={errors.firstName?.message}
+              />
+            )}
+          />
 
-        <Controller
-          control={control}
-          name="lastName"
-          rules={validation["lastName"]}
-          render={({ field: { onChange, value } }) => (
-            <Input
-              label="Last Name"
-              placeholder="Last Name"
-              value={value}
-              onChange={onChange}
-              error={errors.lastName}
-              errorMessage={errors.lastName?.message}
-            />
-          )}
-        />
-      </View>
+          <Controller
+            control={control}
+            name="lastName"
+            rules={validation["lastName"]}
+            render={({ field: { onChange, value } }) => (
+              <Input
+                label="Last Name"
+                placeholder="Last Name"
+                value={value}
+                onChange={onChange}
+                error={errors.lastName}
+                errorMessage={errors.lastName?.message}
+              />
+            )}
+          />
+        </View>
+      </TouchableWithoutFeedback>
     </Layout>
   );
 };
@@ -111,5 +118,6 @@ export const ProfileScreen = () => {
 const styles = StyleSheet.create({
   formContainer: {
     gap: 20,
+    flex: 1,
   },
 });
