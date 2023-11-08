@@ -1,11 +1,11 @@
-import React from "react";
-import { Text } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { HomeScreen } from "~screens/home-screen";
 import { ProfileScreen } from "~screens/profile-screen";
 import { HomeSvg } from "~assets/icons/home";
+import { useAppSelector } from "~hooks/useAppSelector";
+import { ProfilePicture } from "~components/ProfilePicture";
 
 export type BottomTabParamList = {
   homeTab: undefined;
@@ -19,6 +19,8 @@ const AppStack = ({
 }: {
   initialRoute: keyof BottomTabParamList;
 }) => {
+  const userInfo = useAppSelector((state) => state.user);
+
   console.log("Initial route: ", initialRoute);
 
   return (
@@ -45,7 +47,16 @@ const AppStack = ({
         name="profileTab"
         options={{
           headerTitle: "Profile",
-          tabBarIcon: () => <Text>profile</Text>,
+          tabBarIcon: ({ focused }) => {
+            return (
+              <ProfilePicture
+                withBorder={focused}
+                uri={userInfo.avatar}
+                width={32}
+                height={32}
+              />
+            );
+          },
         }}
         component={ProfileScreen}
       />
