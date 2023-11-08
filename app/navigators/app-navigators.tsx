@@ -49,12 +49,15 @@ const AppStack = ({
           headerTitle: "Profile",
           tabBarIcon: ({ focused }) => {
             return (
-              <ProfilePicture
-                withBorder={focused}
-                uri={userInfo.avatar}
-                width={32}
-                height={32}
-              />
+              // TODO - Add a default avatar
+              userInfo.avatar && (
+                <ProfilePicture
+                  withBorder={focused}
+                  uri={userInfo.avatar}
+                  width={32}
+                  height={32}
+                />
+              )
             );
           },
         }}

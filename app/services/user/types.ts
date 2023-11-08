@@ -8,5 +8,5 @@ export interface RawUserInfo {
 export interface UserInfo {
   firstName: string;
   lastName: string;
-  avatar: string;
+  avatar?: string;
 }
