@@ -1,0 +1,11 @@
+{
+  "extends": "@tsconfig/react-native/tsconfig.json",
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "allowJs": true,
+    "paths": {
+      "~*": ["./app/*"]
+    }
+  },
+  "exclude": ["./babel.config.js"]
+}
